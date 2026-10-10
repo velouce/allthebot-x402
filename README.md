@@ -1,4 +1,4 @@
-# AllTheBot — 43 pay-per-call APIs for AI agents (x402, USDC on Base)
+# AllTheBot — 44 pay-per-call APIs for AI agents (x402, USDC on Base)
 
 **No account, no API key.** Call an endpoint, get an HTTP `402` with the price, pay in USDC on Base with any
 [x402](https://x402.org) client, get your JSON. Fractions of a cent per call.
@@ -37,7 +37,6 @@ Exact inputs and examples for every endpoint: [OpenAPI spec](https://api.zkrobot
 ## Endpoints
 
 Prices are indicative: the agent tunes its own prices, the live price is always in the `402` response.
-
 ### Text AI
 
 | Endpoint | Price | What you get |
@@ -70,21 +69,22 @@ Prices are indicative: the agent tunes its own prices, the live price is always 
 | `/x402/eth/ens` | $0.003 | ENS resolve on Ethereum: turn a .eth name into an address, or an address into its primary ENS name (reverse names returned only when verified). Forward and reverse lookup. |
 | `/x402/eth/contract` | $0.003 | Is this Ethereum address a contract or a wallet? EOA, EIP-7702 delegated wallet or smart contract, bytecode size, ETH balance and ERC-20 symbol. Safety check before sending funds. |
 | `/x402/crypto/price` | $0.002 | Crypto token price in USD: live price of ETH, BTC (cbBTC), DAI, AERO or any Base token address, from on-chain DEX pools (Uniswap v3, Aerodrome), best route direct or via WETH. No API key, read-only. |
-| `/x402/crypto/token-report` | $0.012 | Token security check and rug pull / honeypot detector for any Base token: A-F risk grade from fixed rules, price, liquidity, round-trip loss (hidden taxes), impact of a $1,000 sale, owner, upgradeable proxy, mint / pause / blacklist functions, plus a short plain-English verdict. |
+| `/x402/crypto/address-profile` | $0.005 | Wallet profile and address intelligence on Base and Ethereum in one call: wallet or contract, ETH and USDC balances, transaction count, verified ENS / Basename, where it is active. Give an address or an ENS name. No API key. |
+| `/x402/crypto/token-report` | $0.008 | Token security check and rug pull / honeypot detector for any Base token: A-F risk grade from fixed rules, price, liquidity, round-trip loss (hidden taxes), impact of a $1,000 sale, owner, upgradeable proxy, mint / pause / blacklist functions, plus a short plain-English verdict. |
 
 ### Domains, finance & public data
 
 | Endpoint | Price | What you get |
 |---|---|---|
 | `/x402/quality` | $0.005 | x402 directory and uptime monitoring: find the most reliable, cheapest or fastest Base x402 endpoint for your keywords before you pay, with measured uptime (7/30 days), latency, price consistency and a market price summary. Probed every 6 h without payment; the seller excludes its own endpoints. |
-| `/x402/perp/funding` | $0.003 | Funding rate API for perpetual futures: current funding rate of any coin (BTC, ETH, SOL...) on Hyperliquid, Binance and Bybit in one call, with annualized %, next funding time, 24 h average, mark price, open interest and volume. For trading and arbitrage agents. |
+| `/x402/perp/funding` | $0.003 | Funding rate API for perpetual futures: current funding rate of any coin (BTC, ETH, SOL...) on Hyperliquid, with annualized %, next funding time, 24 h average, mark price, open interest and volume. For trading and arbitrage agents. |
 | `/x402/france/weather-alerts` | $0.003 | Official Meteo-France weather warnings (vigilance) for today and tomorrow: green / yellow / orange / red level per hazard (wind, thunderstorms, rain-flood, floods, snow-ice, heatwave, extreme cold, avalanches, waves-submersion) for a French department, or every department on orange or red. Keyless, official open data. |
 | `/x402/france/flood-alerts` | $0.003 | Official French flood warnings (Vigicrues): every river section on yellow, orange or red flood vigilance with its position, plus the national count by color. Filter by river name (Seine, Loire, Garonne...). Official open data. |
 | `/x402/france/river-level` | $0.004 | Real-time river water level and flow in France: the nearest gauging stations to a latitude / longitude with height (m), flow (m3/s) and 3-hour trend (rising, falling, stable). Official Hub'Eau open data, for logistics, travel and flood-risk agents. |
+| `/x402/weather/forecast` | $0.003 | Weather forecast API for any latitude / longitude worldwide: current conditions, next 24 hours hour by hour and a 1-7 day daily summary (min / max temperature, precipitation, wind, humidity, cloud cover, weather symbol). MET Norway data, no API key. |
 | `/x402/finance/fx-rates` | $0.004 | Currency exchange rates and forex API: official ECB (European Central Bank) reference rates for ~30 currencies (USD, EUR, GBP, JPY, CHF, CNY...), any base currency, with currency conversion of an amount. Daily, no API key. |
 | `/x402/finance/sec-filings` | $0.003 | SEC EDGAR filings by stock ticker: latest 10-K annual reports, 10-Q quarterly reports, 8-K material events and more for any US-listed company, with links to each document. |
 | `/x402/finance/company-financials` | $0.005 | Company financials and stock fundamentals from SEC EDGAR filings by ticker: revenue, operating income, net income, diluted EPS (latest quarter and fiscal year), cash, assets, liabilities, equity and shares outstanding, as reported in XBRL. |
-| `/x402/finance/central-bank-rates` | $0.004 | Central bank policy interest rates (Fed, ECB, BoE, BoJ, SNB and ~40 countries) from the BIS, ranked, with an FX carry-trade spread ranking versus a funding currency (e.g. JPY, CHF). Macro data API. |
 | `/x402/domain/dns` | $0.002 | DNS lookup API: A, AAAA, MX, TXT, NS, CNAME and CAA records of any domain in one call, with TTL and DNSSEC validation, via public DNS-over-HTTPS. Domain and network recon for agents. |
 | `/x402/domain/whois` | $0.003 | WHOIS lookup and domain availability check (RDAP): registered or available, registrar, creation and expiry dates, days until expiry, status and nameservers. Registrant contacts are never returned. |
 | `/x402/domain/ssl` | $0.003 | SSL certificate check: is the HTTPS certificate of a domain valid? Issuer, expiry date, days remaining, names covered (SAN), hostname match and TLS version. Expiry monitoring for agents. |
